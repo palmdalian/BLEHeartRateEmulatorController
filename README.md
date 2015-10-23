@@ -1,7 +1,8 @@
-BLEHeartRateLogger.py
+HeartEmulator.py
 =====================
 
-BLEHeartRateLogger.py is a Bluetooth Low-Energy (BLE) Heart Rate Monitor (HRM) data logger written in Python for Linux. With this tool you can log your heart rate and heart rate variability (RR) during exercise, sleep or whatever comes to mind.
+Originally based off https://github.com/fg1/BLEHeartRateLogger
+HeartEmulator.py is a Bluetooth Low-Energy (BLE) Heart Rate Monitor (HRM) written in Python for the Raspberry Pi. The main purpose is to send commands to an Arduino to control the speed of an SNES emulator using simple keyboard commands.
 
 Communication with the BLE HRM is established using `hcitool` and `gatttool`. The output of those tools is then parsed and saved to an sqlite database.
 
@@ -9,10 +10,11 @@ Communication with the BLE HRM is established using `hcitool` and `gatttool`. Th
 
 ## Installation
 
-On Debian/Ubuntu:
+On the RPi (as of 7/2015):
+Install bluez from source to get the -random option required for some BLE devices.
 ```
-$ apt-get install bluetooth python-pexpect
-$ git clone https://github.com/fg1/BLEHeartRateLogger.git
+$ apt-get install python-pexpect
+$ git clone https://github.com/palmdalian/BLEHeartRateEmulatorController.git
 ```
 
 Run the script as root or correctly specify the rights on `hcitool` and `gatttool`.
@@ -23,12 +25,12 @@ Run the script as root or correctly specify the rights on `hcitool` and `gatttoo
 
 To start the tool (as root or with correct rights):
 ```
-# ./BLEHeartRateLogger.py
-2015-01-10 13:40:59,326  Trying to find a BLE device
-2015-01-10 13:41:00,856  Establishing connection to 00:11:22:33:44:55
-2015-01-10 13:41:01,115  Connected to 00:11:22:33:44:55
-2015-01-10 13:41:03,412  Heart rate: 65
-2015-01-10 13:41:04,357  Heart rate: 65
+# ./HeartEmulator.py
+2015-10-23 01:04:05,261  Establishing connection to 11:22:33:44:C6:25
+2015-10-23 01:04:35,438  Establishing connection to 11:22:33:44:C6:25
+2015-10-23 01:04:36,242  Connected to 11:22:33:44:C6:25
+Target heart rate starts at 63
+
 ```
 
 To quit the tool, simply Ctrl-C.
@@ -76,7 +78,7 @@ In case one of the steps mentionned above fails, check your Linux installation a
 
 Contributions are welcome.
 
-1. [Fork the repository](https://github.com/fg1/BLEHeartRateLogger/fork)
+1. [Fork the repository](https://github.com/palmdalian/BLEHeartRateEmulatorController/fork)
 2. Create your feature branch (`git checkout -b my-feature`)
 3. Commit your changes (`git commit -am 'Commit message'`)
 4. Push to the branch (`git push origin my-feature`)
