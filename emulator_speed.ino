@@ -1,4 +1,3 @@
-          // the number of pins (i.e. the length of the array)
 
 void setup()   /****** SETUP: RUNS ONCE ******/
 {
@@ -9,7 +8,7 @@ void setup()   /****** SETUP: RUNS ONCE ******/
   Keyboard.begin();
   while (! Serial1); // Wait until Serial is ready - Leonardo Arduino
   
-  delay(4000); //Check that all relays are inactive at Reset
+  delay(4000); //Probably unnecessary to wait this long
   Serial.println("Ready to start");
   
 }//--(end setup )---
